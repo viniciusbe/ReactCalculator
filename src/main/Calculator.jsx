@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-class-members */
 import React, { Component } from 'react'
 import './Calculator.css'
 
@@ -27,13 +28,9 @@ export default class Calculator extends Component {
         this.setState({ ...inicialState })
     }
 
-    setOperation(operation) {
-        if (this.state.current === 0) {
-
-        }
-    }
 
     setOperation(operation) {
+
         if (this.state.current === 0) {
             this.setState({ operation, current: 1, clearDisplay: true })
         } else {
@@ -42,24 +39,31 @@ export default class Calculator extends Component {
 
             const values = [...this.state.values]
             try {
+                // eslint-disable-next-line no-eval
                 values[0] = eval(`${values[0]} ${curretOperation} ${values[1]}`)
             } catch (e) {
                 values[0] = this.state.values[0]
             }
-            
+
             values[1] = 0
             this.setState({
-                displayValue: values[0],
+                displayValue: String(values[0]),
                 operation: equals ? null : operation,
                 current: equals ? 0 : 1,
                 clearDisplay: !equals,
                 values
             })
         }
+
+        console.log(this.state)
+
     }
 
     addDigit(n) {
-        if (n == '.' && this.state.displayValue.includes('.')) {
+
+
+
+        if (n === '.' && this.state.displayValue.includes('.')) {
             return
         }
 
@@ -70,14 +74,15 @@ export default class Calculator extends Component {
         const displayValue = currentValue + n
         this.setState({ displayValue, clearDisplay: false })
 
-        if (n != '.') {
+        if (n !== '.') {
             const i = this.state.current
             const newValue = parseFloat(displayValue)
             const values = [...this.state.values]
             values[i] = newValue
             this.setState({ values })
-            console.log(values)
         }
+
+        console.log(this.state)
 
     }
     render() {
