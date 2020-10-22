@@ -1,4 +1,8 @@
+This project was made during the [Web Javascript Course](https://github.com/viniciusbe/cursoDeWebEmJs) to practice React fundamentals.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+<img src="https://github.com/viniciusbe/ReactCalculator/blob/master/.github/calcPrev.png"></img>
 
 ## Available Scripts
 
